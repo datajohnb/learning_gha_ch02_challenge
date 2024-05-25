@@ -1,0 +1,38 @@
+name: challenge chap2
+
+on: push
+
+jobs:
+    job1:
+        name: First Job
+        runs-on: ubuntu-latest
+        steps:
+            - name: Step 1 job 1
+              uses: actions/checkout@v4
+            - name: Step 2 job 1
+              run: date
+    job2:
+        name: Second Job
+        runs-on: windows-latest
+        steps:
+            - name: Step 1 job 2
+              uses: actions/checkout@v4
+            - name: Step 2 job 2
+              run: echo %date%
+    job3:
+        name: Third job
+        runs-on: macos-latest
+        steps:
+            - name: Step 1 job 3
+              uses: actions/checkout@v4
+            - name: Step 2 job 3
+              run: date -I
+    job4:
+        name: Fourth job
+        needs: [job1, job2, job3]
+        runs-on: windows-latest
+        steps:
+            - name: Step 1 job 4
+              uses: actions/checkout@v4
+            - name: Step 2 job 4
+              run: echo %date%
