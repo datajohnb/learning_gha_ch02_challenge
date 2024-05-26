@@ -7,32 +7,32 @@ jobs:
         name: First Job
         runs-on: ubuntu-latest
         steps:
-            - name: Step 1 job 1
+            - name: Checkout repo to runner (job 1)
               uses: actions/checkout@v4
-            - name: Step 2 job 1
+            - name: Print date (Ubuntu)
               run: date
     job2:
         name: Second Job
         runs-on: windows-latest
         steps:
-            - name: Step 1 job 2
+            - name: Checkout repo to runner (job 2)
               uses: actions/checkout@v4
-            - name: Step 2 job 2
+            - name: Print date (Windows)
               run: Get-Date
     job3:
         name: Third job
         runs-on: macos-latest
         steps:
-            - name: Step 1 job 3
+            - name: Checkout repo to runner (job 3)
               uses: actions/checkout@v4
-            - name: Step 2 job 3
+            - name: Print date (Mac-OS)
               run: date -I
     job4:
         name: Fourth job
         needs: [job1, job2, job3]
         runs-on: windows-latest
         steps:
-            - name: Step 1 job 4
+            - name: Checkout repo to runner (job 4)
               uses: actions/checkout@v4
-            - name: Step 2 job 4
+            - name: Print date (Windows, again)
               run: echo %date%
